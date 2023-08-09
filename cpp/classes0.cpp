@@ -2,6 +2,10 @@
 using namespace std;
 
 class Room{
+
+    int rating;
+    // everything written before public is automatically set private and we can also use private keyword
+
     public:
 
     int length;
