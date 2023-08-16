@@ -20,10 +20,9 @@ class Complex{
         cout<<"Your number is: "<<a<<"+"<<b<<"i"<<endl;
     }
 
-    friend int Calulator :: SumReal(Complex obj1,Complex obj2);
-    friend int Calculator :: SumImaginary(Complex obj1,Complex obj2);
+    friend int Calculator::SumReal(Complex obj1,Complex obj2);
+    friend int Calculator::SumImaginary(Complex obj1,Complex obj2);
 
-    friend class Calculator;
 };
 
 int Calculator::SumReal(Complex obj1,Complex obj2){
@@ -36,10 +35,9 @@ int Calculator::SumImaginary(Complex obj1,Complex obj2){
 
 int main(){
     Complex o1,o2;
+    int a,b;
 
     o1.setNumber(1,2);
     o2.setNumber(2,3);
-
-
 
 }
