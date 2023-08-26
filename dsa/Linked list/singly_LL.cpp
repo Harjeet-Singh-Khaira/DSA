@@ -58,6 +58,28 @@ void searchKey(Node* head,int key){
     }
 }
 
+void deletion(Node* &head, int val){
+    Node* temp = head;
+
+    if(head == NULL){
+        return;
+    }
+
+    if(head->data == val){
+        head = head->next;
+        delete temp;
+        return;
+    }
+
+    while(temp->next->data != val){
+        temp = temp->next;
+    }
+
+    Node* toDelete = temp->next;
+    temp->next = temp->next->next;
+    delete toDelete;
+}
+
 void display(Node* head){
     Node* temp = head;
 
@@ -69,7 +91,7 @@ void display(Node* head){
 }
 
 int main(){
-    int key;
+    int key,del;
     Node *head = NULL;
     insertAtTail(head,1);
     insertAtTail(head,2);
@@ -81,4 +103,8 @@ int main(){
     cout<<"\nEnter key: ";
     cin>>key;
     searchKey(head,key);
+    cout<<"Enter element to be deleted: ";
+    cin>>del;
+    deletion(head,del);
+    display(head);
 }
