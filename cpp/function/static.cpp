@@ -25,7 +25,7 @@ class Students{
 
 //static functions will only work with static variables
 
-int Students::count = 100;
+int Students::count = 0;
 
 int main(){
     Students s1,s2,s3;
