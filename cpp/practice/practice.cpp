@@ -1,19 +1,14 @@
 #include<bits/stdc++.h>
-#define ll long long
 using namespace std;
 
 int main(){
-    ll n,a,b,c;
-    cin>>n;
-    for(int i=0;i<n;i++){
-        cin>>a>>b>>c;
-        if((a+b)>=10||(b+c)>=10||(a+c)>=10){
-            cout<<"YES"<<endl;
-        }
-        else{
-            cout<<"NO"<<endl;
-        }
-        
+    int arr[10]={1,2,3,4,2,5,6,7,8,9},ans=0;
+    for(int i=0;i<10;i++){
+        ans=ans^arr[i];
     }
+    for(int i=1;i<10;i++){
+        ans=ans^i;
+    }
+    cout<<ans;
     return 0;
 }
