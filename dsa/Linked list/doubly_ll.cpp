@@ -41,32 +41,73 @@ void insertionAtTail(Node* &head,int val){
     n->prev = temp;
 }
 
-// void insertionAtTailUsingTail(Node* &tail,int val){
+//Not working code.
+// void insertionAtTail(Node* &tail,int val){
 //     Node* n = new Node(val);
 
 //     n->prev = tail;
 //     if(tail != NULL){
 //         tail->next = n;
-//         return;
 //     }
-//     tail=n;
+//     tail = n;
 // }
 
+//Not working code.
+void deletion(Node* &head, int key){
+    Node* temp = head;
+    Node* n;
+    Node* p;
+
+    if(head == NULL){
+        return;
+    }
+
+    if(head->data == key){
+        head = head->next;
+        delete temp;
+        head->prev = NULL;
+        return;
+    }
+
+    while(temp->data != key){
+        temp = temp->next;
+    }
+
+    p = temp->prev;
+    if(temp->next == NULL){
+        p->next = NULL;
+        delete temp;
+        return;
+    }
+    p->next = temp->next;
+    n = temp->next;
+    n->prev = p;
+    delete temp;
+}
 
 void display(Node* head){
     Node* temp = head;
 
     cout<<"NULL->";
-    while(temp != NULL){
-        cout<<temp->data<<"->";
+    cout<<temp->data<<"->";
+    while(temp->next != NULL){
+        cout<<temp->next->data<<"->";
         temp = temp->next;
     }
-    cout<<"NULL";
+    cout<<"NULL"<<endl;
+    cout<<"Backwards:\n";
+
+    cout<<"NULL->";
+    while(temp != NULL){
+        cout<<temp->data<<"->";
+        temp = temp->prev;
+    }
+    cout<<"NULL"<<endl;
 }
 
 int main(){
     Node* head = NULL;
-    Node* tail = NULL;
+    int del;
 
     insertionAtTail(head,1);
     insertionAtTail(head,100);
@@ -75,5 +116,9 @@ int main(){
     insertionAtHead(head,77);
     insertionAtHead(head,13);
 
+    display(head);
+    cout<<"Enter element to be deleted: ";
+    cin>>del;
+    deletion(head,del);
     display(head);
 }
