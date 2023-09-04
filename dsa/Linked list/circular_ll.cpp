@@ -155,6 +155,23 @@ void display(Node* head){
     cout<<"head";
 }
 
+Node* getStartingNode(Node* head){
+    if(head == NULL){
+        return NULL;
+    }
+
+    Node* intersection = floyDetectLoop(head);
+
+    Node* temp = head;
+
+    while(temp != intersection){
+        temp = temp->next;
+        intersection = intersection->next;
+    }
+
+    return temp;
+}
+
 int main(){
     int del;
     Node *head = NULL;
