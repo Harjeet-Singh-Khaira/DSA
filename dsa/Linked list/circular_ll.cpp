@@ -51,43 +51,43 @@ void insertAtHead(Node* &head, int val){
     head = n;
 }
 
-void deletion(Node* &head, int val){
-    Node* temp = head->next;
-    Node* del;
+// void deletion(Node* &head, int val){
+//     Node* temp = head->next;
+//     Node* del;
 
-    if(head == NULL){
-        return;
-    }
+//     if(head == NULL){
+//         return;
+//     }
 
-    if(head->data == val){
-        while(temp->next != head){
-            temp = temp->next;
-        }
-        del = head;
-        temp->next = head->next;
-        head = head->next;
-        delete del;
-        return;
-    }
+//     if(head->data == val){
+//         while(temp->next != head){
+//             temp = temp->next;
+//         }
+//         del = head;
+//         temp->next = head->next;
+//         head = head->next;
+//         delete del;
+//         return;
+//     }
 
-    if(temp->data == val){
-        del = head->next;
-        head->next = temp->next;
-        delete del;
-    }
+//     if(temp->data == val){
+//         del = head->next;
+//         head->next = temp->next;
+//         delete del;
+//     }
 
-    while(temp->next->data != val && temp != head){
-        temp = temp->next;
-    }
+//     while(temp->next->data != val && temp != head){
+//         temp = temp->next;
+//     }
 
-    if(temp == head){
-        return;
-    }
+//     if(temp == head){
+//         return;
+//     }
 
-    del = temp->next;
-    temp->next = temp->next->next;
-    delete del;
-}
+//     del = temp->next;
+//     temp->next = temp->next->next;
+//     delete del;
+// }
 
 bool isCircular(Node* head){
     Node* temp = head->next;
@@ -170,6 +170,32 @@ Node* getStartingNode(Node* head){
     }
 
     return temp;
+}
+
+void removeLoop(Node* &head){
+    if(head == NULL){
+        return;
+    }
+
+    // Node* intersection = floyDetectLoop(head);
+
+    // Node* temp = head;
+
+    // while(temp->next != intersection->next){
+    //     temp = temp->next;
+    //     intersection = intersection->next;
+    // }
+
+    // intersection->next = NULL;
+
+    Node* startOfLoop = getStartingNode(head);
+    Node* temp = startOfLoop;
+
+    while(temp->next != startOfLoop){
+        temp = temp->next;
+    }
+
+    temp->next = NULL;
 }
 
 int main(){
