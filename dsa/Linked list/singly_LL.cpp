@@ -106,8 +106,29 @@ Node* reverse(Node* &head){
     return prev;
 }
 
+Node* kReverse(Node* &head, int k){
+    Node* prev = NULL;
+    Node* curr = head;
+    Node* next = NULL;
+    int n = 0;
+    while(curr != NULL && n < k){
+        next = curr->next;
+        curr->next = prev;
+
+        prev = curr;
+        curr = next;
+        n++;
+    }
+
+    if(next != NULL){
+        head->next = kReverse(next,k);
+    }
+
+    return prev;
+}
+
 int main(){
-    int key,del;
+    int key,del,k;
     Node *head = NULL;
     insertAtTail(head,1);
     insertAtTail(head,2);
@@ -123,6 +144,9 @@ int main(){
     cin>>del;
     deletion(head,del);
     display(head);
-    cout<<endl;
+    cout<<endl<<"Reversed array: \n";
     display(reverse(head));
+    cout<<endl<<"Enter value of k: ";
+    cin>>k;
+    display(kReverse(head,k));
 }
