@@ -31,6 +31,30 @@ void insertAtHead(Node* &head,int val){
     head = n;
 }
 
+void arrangeLL(Node* &head){
+    Node* temp = head;
+    Node* prev = NULL;
+    Node* next = NULL;
+    while(temp != NULL){
+        next = temp->next;
+        if(temp->data == 0){
+            if(temp == head){
+                temp = temp->next;
+            }
+            else{
+                
+            }
+        }
+        else if(temp->next->data == 2){
+            insert(head,2);
+            temp->next = temp->next->next;
+        }
+        else{
+            temp = temp->next;
+        }
+    }
+}
+
 void display(Node* head){
     Node* temp = head;
     while(temp != NULL){
@@ -51,5 +75,8 @@ int main(){
     insert(head,2);
     insert(head,0);
 
+    display(head);
+    arrangeLL(head);
+    cout<<"After arrangement: ";
     display(head);
 }
