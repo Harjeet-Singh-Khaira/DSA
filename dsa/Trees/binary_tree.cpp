@@ -13,6 +13,30 @@ class Node{
     }
 };
 
+void preorder(Node* root){
+    if(root == NULL) return;
+
+    cout<<root->data<<" ";
+    preorder(root->left);
+    preorder(root->right);
+}
+
+void postorder(Node* root){
+    if(root == NULL) return;
+
+    preorder(root->left);
+    preorder(root->right);
+    cout<<root->data<<" ";
+}
+
+void inorder(Node* root){
+    if(root == NULL) return;
+
+    preorder(root->left);
+    cout<<root->data<<" ";
+    preorder(root->right);
+}
+
 int main(){
     Node* root = new Node(1);
     root->left = new Node(2);
@@ -22,4 +46,10 @@ int main(){
     root->left->right = new Node(5);
     root->right->left = new Node(6);
     root->right->right = new Node(7);
+
+    preorder(root);
+    cout<<endl;
+    inorder(root);
+    cout<<endl;
+    postorder(root);
 }
