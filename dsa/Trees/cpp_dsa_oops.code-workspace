@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.py": "python",
+			"ostream": "cpp",
+			"initializer_list": "cpp",
+			"iomanip": "cpp",
+			"iostream": "cpp",
+			"new": "cpp",
+			"array": "cpp",
+			"bitset": "cpp",
+			"regex": "cpp",
+			"utility": "cpp",
+			"valarray": "cpp"
+		}
+	}
+}

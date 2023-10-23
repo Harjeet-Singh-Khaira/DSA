@@ -40,6 +40,9 @@ void printLevelOrder(Node* root){
         else if(!q.empty()){
             q.push(NULL);
         }
+        // if(node==NULL){
+        //     cout<<"NULL"<<" ";
+        // }
     }
 }
 
