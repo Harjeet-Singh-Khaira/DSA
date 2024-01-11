@@ -80,6 +80,37 @@ void deletion(Node* &head, int val){
     delete toDelete;
 }
 
+void del(Node* &head, int val){
+    Node* temp = head;
+
+    if(temp == NULL){
+        cout << "List is empty\n";
+        return;
+    }
+    if(temp->data == val){
+        head = head->next;
+        cout << "data deleted: " << val << endl;
+        delete temp;
+        return;
+    }
+    bool f = true;
+    while(temp->next){
+        if(temp->next->data == val){
+            Node* n = temp->next;
+            temp->next = temp->next->next;
+            cout << "data deleted: " << val << endl;
+            delete n;
+            f=false;
+            break;
+        }
+        temp = temp->next;
+    }
+    if(f){
+        cout<<"Data not found."<<endl;
+    }
+    return;
+}
+
 void display(Node* head){
     Node* temp = head;
 
@@ -87,7 +118,7 @@ void display(Node* head){
         cout<<temp->data<<" -> ";
         temp = temp->next;
     }
-    cout<<"NULL";
+    cout<<"NULL\n";
 }
 
 Node* reverse(Node* &head){
@@ -128,7 +159,8 @@ Node* kReverse(Node* &head, int k){
 }
 
 int main(){
-    int key,del,k;
+    int key,k;
+    //int del;
     Node *head = NULL;
     insertAtTail(head,1);
     insertAtTail(head,2);
@@ -136,17 +168,23 @@ int main(){
     insertAtHead(head,10);
     insertAtHead(head,20);
 
+    // display(head);
+    // cout<<"\nEnter key: ";
+    // cin>>key;
+    // searchKey(head,key);
+    // cout<<"Enter element to be deleted: ";
+    // cin>>del;
+    // deletion(head,del);
+    // display(head);
+    // cout<<endl<<"Reversed array: \n";
+    // display(reverse(head));
+    // cout<<endl<<"Enter value of k: ";
+    // cin>>k;
+    // display(kReverse(head,k));
+
+    int n;
     display(head);
-    cout<<"\nEnter key: ";
-    cin>>key;
-    searchKey(head,key);
-    cout<<"Enter element to be deleted: ";
-    cin>>del;
-    deletion(head,del);
+    cin>>n;
+    del(head,n);
     display(head);
-    cout<<endl<<"Reversed array: \n";
-    display(reverse(head));
-    cout<<endl<<"Enter value of k: ";
-    cin>>k;
-    display(kReverse(head,k));
 }
